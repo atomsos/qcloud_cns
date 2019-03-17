@@ -3,5 +3,5 @@ tencent cloud cns record
 
 ## Usage:
 ```bash
-echo $name $value | python qcloud.py -d $domain
+echo $subDomain $value | python qcloud.py -d $domain
 ```
