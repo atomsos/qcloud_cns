@@ -20,10 +20,13 @@ for _file in secretFiles:
 
 try:
     res = yaml.load(open(secret))
+except:
+    raise IOError(secret+" may not exist, please copy config.yaml.template to config.yaml")
+try:
     secretID, secretKey = res['secretID'], res['secretKey']
     default_domain = res.get('default_domain', None)
 except:
-    raise ValueError("Please check secret files", secretFiles)
+    raise ValueError("Please check config.yaml", secretFiles)
 
 
 
