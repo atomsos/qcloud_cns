@@ -1,4 +1,9 @@
-language: python3.6
+matrix:
+  include:
+    - language: python
+      python: "3.6"
+      env: TOXENV=py36
+
 deploy:
   provider: pages
   skip-cleanup: true
@@ -6,3 +11,11 @@ deploy:
   keep-history: true
   on:
     branch: master
+
+#install:
+#  - pip install --upgrade tox
+
+#script: tox -r
+
+#after_success:
+#    - tox -r -ecoveralls
