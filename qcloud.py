@@ -141,7 +141,7 @@ def mod_record(domain, subDomain, recordType='A', recordLine='默认',
     """Add/Modify record and enable it"""
 
     assert domain in list(get_domainList()), domain+' not belongs to this user'
-    assert recordType in ["A", "CNAME", "MX", "TXT", "NS", "AAAA", "SRV"]
+    # assert recordType in ["A", "CNAME", "MX", "TXT", "NS", "AAAA", "SRV"]
     assert recordLine in ["默认", "电信","联通", "移动", "海外"]
     assert value is not None, 'value cannot be empty'
     assert ttl is None or int(ttl)
@@ -217,6 +217,7 @@ if __name__ == '__main__':
     for line in sys.stdin.readlines():
         if len(line.split()) <= 1:
             continue
-        name, ip = line.split()[:2]
-        mod_record(args.domain, name, value=ip)
-        mod_record(args.domain, name, value=ip)
+        line += " A"
+        subDomain, value,recordType = line.split()[:3]
+        for i in range(2):
+            mod_record(args.domain, subDomain, recordType=recordType, value=value)
