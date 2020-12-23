@@ -1,2 +1,3 @@
-qcloudapi-sdk-python
-netaddr
+qcloudapi-sdk-python>=2.0.15
+netaddr>=0.7.19
+PyYAML>=5.1.2
