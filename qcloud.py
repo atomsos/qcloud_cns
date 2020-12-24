@@ -206,6 +206,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--domain')
     parser.add_argument('--test', action='store_true')
+    parser.add_argument('subDomain')
+    parser.add_argument('value')
+    parser.add_argument('recordType', nargs='?', default='A')
     args = parser.parse_args()
 
     if args.test:
@@ -217,10 +220,10 @@ if __name__ == '__main__':
         else:
             raise ValueError("No default domain provided")
 
-    for line in sys.stdin.readlines():
-        if len(line.split()) <= 1:
-            continue
-        line += " A"
-        subDomain, value,recordType = line.split()[:3]
-        for i in range(2):
-            mod_record(args.domain, subDomain, recordType=recordType, value=value)
+    # for line in sys.stdin.readlines():
+    #     if len(line.split()) <= 1:
+    #         continue
+    #     line += " A"
+    #     subDomain, value, recordType = line.split()[:3]
+    #     for i in range(2):
+    mod_record(args.domain, args.subDomain, recordType=args.recordType, value=args.value)
